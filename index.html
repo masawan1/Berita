@@ -3,216 +3,466 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materi: Teknik Penulisan Naskah Berita Lengkap</title>
+    <title>Mastering Naskah Berita: Modul Interaktif SMK Broadcast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* --- RESET & VARIABEL --- */
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
-            --accent-color: #e74c3c;
-            --light-bg: #f4f7f6;
+            --primary: #2c3e50; /* Dark Navy */
+            --secondary: #34495e;
+            --accent: #e74c3c; /* Alizarin Red */
+            --success: #27ae60;
+            --light: #ecf0f1;
             --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: var(--light-bg);
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* --- HERO HEADER --- */
         header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%);
             color: var(--white);
-            padding: 2rem 1rem;
+            padding: 100px 20px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
         }
 
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23f4f7f6" fill-opacity="1" d="M0,224L60,213.3C120,203,240,181,360,186.7C480,192,600,224,720,224C840,224,960,192,1080,176C1200,160,1320,160,1380,160L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>');
+            background-size: cover;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            animation: fadeInDown 1s ease;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease 0.5s backward;
+        }
+
+        /* --- CONTAINER UTAMA --- */
         .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 100px 20px;
         }
 
+        /* --- STYLING SECTION --- */
         section {
             background: var(--white);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        h1 { margin: 0; font-size: 2rem; }
-        h2 { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 15px; margin-top: 0; }
-        h3 { color: var(--secondary-color); margin-top: 1.5rem; }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        ul, ol { padding-left: 20px; }
-        li { margin-bottom: 10px; }
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 15px;
+        }
+
+        h2 i {
+            margin-right: 15px;
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin: 25px 0 10px 0;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        strong { color: var(--primary); }
+
+        /* --- JENIS BERITA (CARDS) --- */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .news-card {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 4px solid transparent;
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            background: var(--white);
+            border-top-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transform: scale(1.02);
+        }
+
+        .news-card h4 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-card h4 i { margin-right: 10px; color: var(--accent); font-size: 1.1rem;}
+
+        /* --- 5W+1H (INTERAKTIF) --- */
+        .formula-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .formula-list li {
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .formula-list li:hover, .formula-list li.active {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .formula-detail {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* --- ISTILAH TEKNIS (TABLET MODERN) --- */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
+            min-width: 500px;
         }
 
         th, td {
-            padding: 12px;
+            padding: 18px;
             text-align: left;
         }
 
         th {
-            background-color: var(--secondary-color);
-            color: white;
+            background-color: var(--primary);
+            color: var(--white);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
 
-        tr:nth-child(even) { background-color: #f9f9f9; }
+        td {
+            border-bottom: 1px solid #eee;
+        }
 
-        .note {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffecb5;
-            padding: 1rem;
-            font-style: italic;
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: #fcfcfc; }
+
+        .term-badge {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 4px 8px;
             border-radius: 4px;
-            margin-top: 1rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #777;
+            font-family: 'Roboto Mono', monospace;
             font-size: 0.9rem;
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 1.5rem; }
-            section { padding: 1.5rem; }
-            table { font-size: 0.85rem; }
+        /* --- CONTOH NASKAH (CODE STYLE) --- */
+        .script-sample {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        .script-sample strong { color: #66d9ef; } /* Anchor */
+        .script-sample i { color: #a6e22e; }    /* Visual */
+        .script-sample span { color: #e6db74; } /* Tanda Baca */
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: auto;
+        }
+
+        /* --- ANIMASI KEYFRAMES --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            section { padding: 25px; }
+            h2 { font-size: 1.6rem; }
+            th, td { padding: 12px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Teknik Penulisan Naskah Berita</h1>
-    <p>Modul Pembelajaran Dasar Penyiaran & Jurnalistik</p>
+    <div class="container_hero">
+        <h1>Mastering Naskah Berita</h1>
+        <p><i class="fas fa-satellite-dish"></i> Modul Interaktif Dasar Penyiaran & Jurnalistik</p>
+    </div>
 </header>
 
 <div class="container">
 
-    <section>
-        <h2>1. Definisi Naskah Berita</h2>
-        <p>Naskah berita adalah teks tertulis yang disusun oleh jurnalis atau <em>scriptwriter</em> sebagai panduan bagi pembaca berita (<em>news anchor/news reader</em>). Tujuannya agar informasi yang disampaikan tetap <strong>akurat, runtut, dan sesuai dengan durasi</strong> yang ditentukan.</p>
+    <section id="definisi">
+        <h2><i class="fas fa-lightbulb"></i>1. Apa Itu Naskah Berita?</h2>
+        <p>Naskah berita adalah <strong>fondasi utama</strong> dalam produksi berita. Ini adalah teks tertulis yang disusun oleh jurnalis atau <em>scriptwriter</em> sebagai panduan operasional bagi pembaca berita (<em>news anchor/news reader</em>).</p>
+        <p>Naskah ini berfungsi menjaga agar informasi yang disampaikan tetap **akurat**, **runtut**, dan **sesuai dengan durasi** siaran yang sangat ketat.</p>
     </section>
 
-    <section>
-        <h2>2. Jenis-jenis Berita</h2>
-        <p>Dalam dunia jurnalistik, berita dibagi menjadi beberapa jenis berdasarkan cara penyampaian dan kedalaman informasinya:</p>
-        <ul>
-            <li><strong>Straight News (Berita Langsung):</strong> Berita yang menyajikan informasi peristiwa terbaru secara singkat, padat, dan apa adanya. Biasanya diletakkan di halaman depan atau pembuka program.</li>
-            <li><strong>Hard News:</strong> Bagian dari straight news yang berisi berita penting, serius, dan harus segera diketahui publik (contoh: politik, ekonomi, kriminalitas).</li>
-            <li><strong>Soft News:</strong> Berita yang lebih ringan dan menghibur, seringkali mengedepankan aspek kemanusiaan (human interest).</li>
-            <li><strong>Depth News (Berita Mendalam):</strong> Berita yang dikembangkan dengan pembahasan yang lebih mendalam, mencari tahu penyebab dan dampak dari suatu peristiwa.</li>
-            <li><strong>Feature:</strong> Berita yang ditulis dengan gaya bercerita (literer), lebih menonjolkan aspek emosional atau sisi unik dari sebuah subjek.</li>
-            <li><strong>Investigative News:</strong> Berita yang disusun berdasarkan penyelidikan panjang untuk mengungkap fakta-fakta tersembunyi.</li>
+    <section id="jenis">
+        <h2><i class="fas fa-list-ul"></i>2. Jenis-jenis Berita</h2>
+        <p>Dalam dunia jurnalistik profesional, berita diklasifikasikan berdasarkan cara penyampaian dan kedalaman informasinya:</p>
+        <div class="news-grid">
+            <div class="news-card">
+                <h4><i class="fas fa-bolt"></i> Straight News</h4>
+                <p>Berita langsung yang menyajikan informasi peristiwa terbaru secara singkat, padat, dan apa adanya.</p>
+            </div>
+            <div class="news-card">
+                <h4><i class="fas fa-fire"></i> Hard News</h4>
+                <p>Bagian dari straight news yang berisi berita serius, penting, dan harus segera diketahui publik (Politik, Kriminal).</p>
+            </div>
+            <div class="news-card">
+                <h4><i class="fas fa-smile"></i> Soft News</h4>
+                <p>Berita yang lebih ringan dan menghibur, seringkali mengedepankan aspek kemanusiaan (human interest).</p>
+            </div>
+            <div class="news-card">
+                <h4><i class="fas fa-search"></i> Investigative News</h4>
+                <p>Berita yang disusun berdasarkan penyelidikan panjang untuk mengungkap fakta-fakta tersembunyi.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="struktur">
+        <h2><i class="fas fa-sitemap"></i>3. Struktur Piramida Terbalik</h2>
+        <p>Informasi paling penting diletakkan di **bagian paling awal** agar audiens langsung mendapatkan inti berita dalam sekali dengar.</p>
+        <ul style="list-style: none; padding: 0; margin-top: 15px;">
+            <li style="border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 10px;">
+                <strong>Lead (Teras Berita):</strong> Paragraf pertama yang berisi poin paling penting (inti 5W+1H).
+            </li>
+            <li style="border-left: 4px solid var(--secondary); padding-left: 15px; margin-bottom: 10px;">
+                <strong>Body (Tubuh Berita):</strong> Penjelasan detail, kronologi, dan latar belakang peristiwa.
+            </li>
+            <li style="border-left: 4px solid var(--light); padding-left: 15px; margin-bottom: 10px; color: #888;">
+                <strong>Tail (Ekor Berita):</strong> Informasi pendukung yang jika dipotong tidak merubah inti berita.
+            </li>
         </ul>
     </section>
 
-    <section>
-        <h2>3. Struktur Dasar: Piramida Terbalik</h2>
-        <p>Informasi yang paling penting diletakkan di bagian paling awal agar audiens langsung mendapatkan inti berita.</p>
-        <ul>
-            <li><strong>Lead (Teras Berita):</strong> Paragraf pertama yang berisi poin paling penting (unsur 5W+1H).</li>
-            <li><strong>Body (Tubuh Berita):</strong> Penjelasan detail, kronologi, dan latar belakang peristiwa.</li>
-            <li><strong>Tail (Ekor Berita):</strong> Informasi pendukung yang jika dipotong tidak akan merubah inti berita.</li>
+    <section id="fondasi">
+        <h2><i class="fas fa-question-circle"></i>4. Fondasi Informasi: 5W + 1H</h2>
+        <p>Klik pada unsur di bawah untuk melihat penjelasannya:</p>
+        <ul class="formula-list" id="formulaList">
+            <li data-target="what">What</li>
+            <li data-target="who">Who</li>
+            <li data-target="where">Where</li>
+            <li data-target="when">When</li>
+            <li data-target="why">Why</li>
+            <li data-target="how">How</li>
         </ul>
+        <div class="formula-detail" id="formulaDetail">
+            <h4 id="detailTitle"></h4>
+            <p id="detailText"></p>
+        </div>
     </section>
 
-    <section>
-        <h2>4. Fondasi Informasi: 5W + 1H</h2>
-        <ol>
-            <li><strong>What:</strong> Apa peristiwa yang terjadi?</li>
-            <li><strong>Who:</strong> Siapa saja tokoh/pihak yang terlibat?</li>
-            <li><strong>Where:</strong> Di mana lokasi kejadiannya?</li>
-            <li><strong>When:</strong> Kapan waktu kejadiannya?</li>
-            <li><strong>Why:</strong> Mengapa peristiwa tersebut bisa terjadi?</li>
-            <li><strong>How:</strong> Bagaimana kronologi atau proses detail kejadiannya?</li>
-        </ol>
+    <section id="karakteristik">
+        <h2><i class="fas fa-microphone-alt"></i>5. Karakteristik "Writing for the Ear"</h2>
+        <p>Berbeda dengan berita cetak, naskah siaran wajib menggunakan gaya bahasa yang **menulis untuk didengar**:</p>
+        <div class="news-grid">
+            <div class="news-card">
+                <h4><i class="fas fa-check-circle"></i> Sederhana & Ringkas</h4>
+                <p>Gunakan kalimat pendek agar mudah dipahami dalam sekali dengar.</p>
+            </div>
+            <div class="news-card">
+                <h4><i class="fas fa-comments"></i> Conversational</h4>
+                <p>Gaya bahasa tutur yang sopan namun bercerita (seperti berbicara langsung).</p>
+            </div>
+            <div class="news-card">
+                <h4><i class="fas fa-brain"></i> Satu Kalimat, Satu Ide</h4>
+                <p>Hindari kalimat majemuk yang membingungkan.</p>
+            </div>
+        </div>
     </section>
 
-    <section>
-        <h2>5. Karakteristik Penulisan (Writing for the Ear)</h2>
-        <ul>
-            <li><strong>Sederhana & Ringkas:</strong> Kalimat pendek agar mudah dipahami dalam sekali dengar.</li>
-            <li><strong>Conversational:</strong> Gaya bahasa tutur yang sopan namun bercerita.</li>
-            <li><strong>Satu Kalimat, Satu Ide:</strong> Fokus pada satu informasi tiap kalimat.</li>
-            <li><strong>Gunakan Kalimat Aktif:</strong> Contoh: <em>"Polisi menangkap pencuri"</em>.</li>
-            <li><strong>Aturan Angka:</strong> 1-10 tulis dengan huruf, di atas 10 gunakan angka.</li>
-        </ul>
+    <section id="istilah">
+        <h2><i class="fas fa-tools"></i>6. Istilah Teknis Produksi TV</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Istilah</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="term-badge">ANCR (Anchor)</span></td><td>Pembaca berita di studio.</td></tr>
+                    <tr><td><span class="term-badge">VO (Voice Over)</span></td><td>Narasi suara saat video (B-Roll) tayang.</td></tr>
+                    <tr><td><span class="term-badge">SOT (Sound on Tape)</span></td><td>Potongan video hasil wawancara narasumber.</td></tr>
+                    <tr><td><span class="term-badge">CG (Char. Gen.)</span></td><td>Teks nama/judul yang muncul di layar.</td></tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
-    <section>
-        <h2>6. Istilah Teknis Produksi</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Istilah</th>
-                    <th>Keterangan</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>ANCR (Anchor)</strong></td><td>Pembaca berita di studio.</td></tr>
-                <tr><td><strong>VO (Voice Over)</strong></td><td>Narasi suara saat video tayang.</td></tr>
-                <tr><td><strong>SOT (Sound on Tape)</strong></td><td>Potongan video wawancara.</td></tr>
-                <tr><td><strong>CG (Character Gen.)</strong></td><td>Teks nama/judul di layar.</td></tr>
-                <tr><td><strong>CU (Close Up)</strong></td><td>Gambar jarak dekat.</td></tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section>
-        <h2>7. Format Penulisan & Contoh</h2>
-        <p>Gunakan tanda baca jeda: <strong>(/)</strong> jeda satu, <strong>(//)</strong> jeda dua, <strong>KAPITAL</strong> untuk penekanan.</p>
-
-        <h3>Contoh Naskah Kolom Ganda</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>VISUAL</th>
-                    <th>AUDIO</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>(CUT TO ANCHOR)</strong></td>
-                    <td><strong>(ANCHOR)</strong>: Selamat siang pemirsa // Inovasi luar biasa datang dari dunia pendidikan //</td>
-                </tr>
-                <tr>
-                    <td><strong>(ROLL VIDEO B-ROLL)</strong></td>
-                    <td><strong>(VO)</strong>: Seorang siswa SMK di Jawa Tengah / berhasil menciptakan aplikasi game edukasi berbasis web //</td>
-                </tr>
-                <tr>
-                    <td><strong>(SOT - SISWA)</strong></td>
-                    <td><strong>(SOT)</strong>: "Tujuan saya membuat game ini agar teman-teman tidak bosan belajar."</td>
-                </tr>
-            </tbody>
-        </table>
+    <section id="format">
+        <h2><i class="fas fa-file-alt"></i>7. Format Penulisan & Contoh</h2>
+        <p>Gunakan tanda baca jeda khusus:</p>
+        <p><strong>(/)</strong> = Jeda satu (Koma), <strong>(//)</strong> = Jeda dua (Titik), <strong>KAPITAL</strong> = Penekanan.</p>
         
-        <div class="note">
-            <strong>Tips:</strong> Lakukan latihan <em>voicing</em> (membaca keras) sebelum merekam atau melakukan siaran.
+        <div class="script-sample">
+            <i>(CUT TO ANCHOR)</i><br>
+            <strong>(ANCHOR):</strong> Selamat siang pemirsa // Inovasi luar biasa datang dari dunia pendidikan // <span>/</span><br><br>
+            <i>(ROLL VIDEO B-ROLL - SISWA MERAKIT)</i><br>
+            <strong>(VO):</strong> Seorang siswa SMK di Jawa Tengah <span>/</span> berhasil menciptakan aplikasi game edukasi berbasis web // <span>/</span><br><br>
+            <i>(SOT - SISWA)</i><br>
+            <strong>(SOT):</strong> "Tujuan saya membuat game ini agar teman-teman tidak bosan belajar koding."
         </div>
     </section>
 
 </div>
 
 <footer>
-    <p>&copy; 2026 Materi Penyiaran SMK - Informatics & Broadcasting</p>
+    <div class="container">
+        <p><i class="fas fa-graduation-cap"></i> Modul Pembelajaran SMK - Informatics & Broadcasting</p>
+        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Material. Desain Modern.</p>
+    </div>
 </footer>
+
+<script>
+    // --- JS UNTUK 5W+1H INTERAKTIF ---
+    const details = {
+        what: { title: "What (Apa)", text: "Menjelaskan peristiwa apa yang sedang terjadi." },
+        who: { title: "Who (Siapa)", text: "Menjelaskan siapa saja tokoh atau pihak yang terlibat." },
+        where: { title: "Where (Di Mana)", text: "Menjelaskan lokasi kejadian peristiwa tersebut." },
+        when: { title: "When (Kapan)", text: "Menjelaskan waktu kejadiannya secara jelas." },
+        why: { title: "Why (Mengapa)", text: "Menjelaskan penyebab atau alasan peristiwa itu terjadi." },
+        how: { title: "How (Bagaimana)", text: "Menjelaskan kronologi atau proses detail kejadiannya." }
+    };
+
+    const listItems = document.querySelectorAll('#formulaList li');
+    const detailBox = document.getElementById('formulaDetail');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailText = document.getElementById('detailText');
+
+    listItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove active class
+            listItems.forEach(li => li.classList.remove('active'));
+            // Add active to clicked
+            this.classList.add('active');
+            
+            const target = this.getAttribute('data-target');
+            detailTitle.innerText = details[target].title;
+            detailText.innerText = details[target].text;
+            detailBox.style.display = 'block';
+        });
+    });
+
+    // --- JS UNTUK ANIMASI SCROLL (Intersection Observer) ---
+    const sections = document.querySelectorAll('section');
+    const options = { threshold: 0.2 };
+
+    const observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, options);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+</script>
 
 </body>
 </html>
