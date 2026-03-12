@@ -102,12 +102,12 @@
 
         .formula-detail { background: #f9f9f9; padding: 20px; border-radius: 10px; display: none; border-left: 5px solid var(--accent); }
 
-        .table-container { overflow-x: auto; border-radius: 10px; }
+        .table-container { overflow-x: auto; border-radius: 10px; margin-top: 20px; }
         table { width: 100%; border-collapse: collapse; background: white; }
-        th, td { padding: 15px; border: 1px solid #eee; text-align: left; }
-        th { background: var(--primary); color: white; }
+        th, td { padding: 18px; border: 1px solid #eee; text-align: left; }
+        th { background: var(--primary); color: white; text-transform: uppercase; font-size: 0.85rem; }
 
-        .term-badge { background: var(--accent); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace; }
+        .term-badge { background: var(--accent); color: white; padding: 4px 10px; border-radius: 4px; font-weight: 600; display: inline-block; margin-bottom: 5px; }
 
         .script-sample {
             background: #272822;
@@ -148,28 +148,28 @@
 <div class="container">
     <section>
         <h2><i class="fas fa-lightbulb"></i> 1. Definisi</h2>
-        <p>Naskah berita adalah panduan tertulis bagi <strong>news anchor</strong> untuk menyampaikan informasi secara akurat dan tepat durasi.</p>
+        <p>Naskah berita adalah panduan tertulis bagi <strong>News Anchor</strong> untuk menyampaikan informasi secara akurat, terstruktur, dan tepat waktu sesuai durasi siaran.</p>
     </section>
 
     <section>
         <h2><i class="fas fa-list"></i> 2. Jenis-Jenis Berita</h2>
         <div class="news-grid">
-            <div class="news-card"><h4>Straight News</h4><p>Berita langsung, singkat, dan padat.</p></div>
-            <div class="news-card"><h4>Hard News</h4><p>Berita serius dan mendesak.</p></div>
-            <div class="news-card"><h4>Soft News</h4><p>Berita ringan/human interest.</p></div>
-            <div class="news-card"><h4>Feature</h4><p>Berita bergaya cerita kreatif.</p></div>
+            <div class="news-card"><h4>Straight News</h4><p>Berita langsung yang singkat dan padat mengenai peristiwa terkini.</p></div>
+            <div class="news-card"><h4>Hard News</h4><p>Berita serius yang menyangkut kepentingan umum dan bersifat mendesak.</p></div>
+            <div class="news-card"><h4>Soft News</h4><p>Berita ringan yang mengedepankan sisi kemanusiaan atau hiburan.</p></div>
+            <div class="news-card"><h4>Feature</h4><p>Berita kreatif yang ditulis dengan gaya bercerita mendalam.</p></div>
         </div>
     </section>
 
     <section>
         <h2><i class="fas fa-question-circle"></i> 3. Fondasi 5W + 1H</h2>
         <ul class="formula-list" id="formulaList">
-            <li data-info="Apa yang terjadi?">What</li>
-            <li data-info="Siapa yang terlibat?">Who</li>
-            <li data-info="Di mana lokasi kejadian?">Where</li>
-            <li data-info="Kapan waktu kejadiannya?">When</li>
-            <li data-info="Mengapa hal itu terjadi?">Why</li>
-            <li data-info="Bagaimana kronologinya?">How</li>
+            <li data-info="Apa peristiwa yang sedang terjadi?">What</li>
+            <li data-info="Siapa saja pihak yang terlibat dalam peristiwa?">Who</li>
+            <li data-info="Di mana lokasi atau tempat kejadian?">Where</li>
+            <li data-info="Kapan waktu terjadinya peristiwa tersebut?">When</li>
+            <li data-info="Mengapa peristiwa tersebut bisa terjadi?">Why</li>
+            <li data-info="Bagaimana proses atau kronologi kejadiannya?">How</li>
         </ul>
         <div id="formulaDetail" class="formula-detail">
             <h4 id="detailTitle"></h4>
@@ -178,25 +178,42 @@
     </section>
 
     <section>
-        <h2><i class="fas fa-tools"></i> 4. Istilah Teknis</h2>
+        <h2><i class="fas fa-tools"></i> 4. Istilah Teknis Produksi</h2>
+        <p>Berikut adalah istilah-istilah penting dalam produksi naskah berita televisi:</p>
         <div class="table-container">
             <table>
-                <tr><th>Istilah</th><th>Fungsi</th></tr>
-                <tr><td><span class="term-badge">ANCR</span></td><td>Teks untuk pembaca berita.</td></tr>
-                <tr><td><span class="term-badge">VO</span></td><td>Suara narasi di atas video.</td></tr>
-                <tr><td><span class="term-badge">SOT</span></td><td>Hasil wawancara narasumber.</td></tr>
-                <tr><td><span class="term-badge">CG</span></td><td>Teks nama di layar.</td></tr>
+                <tr>
+                    <th>Istilah Lengkap</th>
+                    <th>Fungsi & Penjelasan</th>
+                </tr>
+                <tr>
+                    <td><span class="term-badge">News Anchor</span></td>
+                    <td>Pembaca berita utama yang berada di studio untuk memandu jalannya program berita.</td>
+                </tr>
+                <tr>
+                    <td><span class="term-badge">Voice Over</span></td>
+                    <td>Narasi suara jurnalis yang dibacakan untuk menjelaskan visual atau video yang sedang ditayangkan.</td>
+                </tr>
+                <tr>
+                    <td><span class="term-badge">Sound on Tape</span></td>
+                    <td>Potongan video berisi pernyataan atau wawancara langsung dari narasumber di lapangan.</td>
+                </tr>
+                <tr>
+                    <td><span class="term-badge">Character Generator</span></td>
+                    <td>Teks grafis yang muncul di layar, seperti nama narasumber, jabatan, atau lokasi kejadian.</td>
+                </tr>
             </table>
         </div>
     </section>
 
     <section>
         <h2><i class="fas fa-edit"></i> 5. Contoh Naskah</h2>
+        <p>Format penulisan naskah menggunakan tanda jeda (/) untuk memudahkan pernapasan saat membaca.</p>
         <div class="script-sample">
-            <i>(CUT TO ANCHOR)</i><br>
-            <strong>(ANCHOR):</strong> Selamat siang pemirsa // Inovasi luar biasa datang dari dunia pendidikan // / <br><br>
-            <i>(ROLL VIDEO B-ROLL)</i><br>
-            <strong>(VO):</strong> Seorang siswa SMK di Jawa Tengah / berhasil membuat aplikasi game edukasi berbasis web // /
+            <i>(CUT TO NEWS ANCHOR)</i><br>
+            <strong>(NEWS ANCHOR):</strong> Selamat siang pemirsa // Inovasi luar biasa datang dari dunia pendidikan // / <br><br>
+            <i>(ROLL VIDEO VISUAL)</i><br>
+            <strong>(VOICE OVER):</strong> Seorang siswa SMK di Jawa Tengah / berhasil membuat aplikasi game edukasi berbasis web // /
         </div>
     </section>
 </div>
