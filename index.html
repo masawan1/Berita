@@ -7,23 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- RESET & VARIABEL --- */
         :root {
-            --primary: #2c3e50; /* Dark Navy */
+            --primary: #2c3e50;
             --secondary: #34495e;
-            --accent: #e74c3c; /* Alizarin Red */
-            --success: #27ae60;
+            --accent: #e74c3c;
             --light: #ecf0f1;
             --white: #ffffff;
             --shadow: 0 10px 30px rgba(0,0,0,0.1);
             --transition: all 0.3s ease;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -33,7 +27,6 @@
             overflow-x: hidden;
         }
 
-        /* --- HERO HEADER --- */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%);
             color: var(--white);
@@ -53,29 +46,10 @@
             background-size: cover;
         }
 
-        header h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-            animation: fadeInDown 1s ease;
-        }
+        header h1 { font-size: 3rem; font-weight: 700; margin-bottom: 10px; animation: fadeInDown 1s ease; }
 
-        header p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            opacity: 0.8;
-            animation: fadeInUp 1s ease 0.5s backward;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px 100px 20px; }
 
-        /* --- CONTAINER UTAMA --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px 100px 20px;
-        }
-
-        /* --- STYLING SECTION --- */
         section {
             background: var(--white);
             padding: 40px;
@@ -87,20 +61,11 @@
             transform: translateY(20px);
         }
 
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
+        section.visible { opacity: 1; transform: translateY(0); }
 
         h2 {
             color: var(--primary);
-            font-size: 2rem;
-            font-weight: 600;
+            font-size: 1.8rem;
             margin-bottom: 25px;
             display: flex;
             align-items: center;
@@ -108,360 +73,168 @@
             padding-bottom: 15px;
         }
 
-        h2 i {
-            margin-right: 15px;
-            color: var(--accent);
-            font-size: 1.8rem;
-        }
+        h2 i { margin-right: 15px; color: var(--accent); }
 
-        h3 {
-            color: var(--secondary);
-            margin: 25px 0 10px 0;
-            font-weight: 600;
-        }
-
-        p {
-            margin-bottom: 15px;
-            color: #555;
-        }
-
-        strong { color: var(--primary); }
-
-        /* --- JENIS BERITA (CARDS) --- */
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .news-card {
             background: var(--light);
-            padding: 25px;
+            padding: 20px;
             border-radius: 10px;
-            border-top: 4px solid transparent;
-            transition: var(--transition);
+            border-top: 4px solid var(--accent);
         }
 
-        .news-card:hover {
-            background: var(--white);
-            border-top-color: var(--accent);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transform: scale(1.02);
-        }
-
-        .news-card h4 {
-            color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .news-card h4 i { margin-right: 10px; color: var(--accent); font-size: 1.1rem;}
-
-        /* --- 5W+1H (INTERAKTIF) --- */
-        .formula-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
+        .formula-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
         .formula-list li {
             background: var(--primary);
-            color: var(--white);
-            padding: 10px 20px;
+            color: white;
+            padding: 8px 20px;
             border-radius: 50px;
             cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
+            transition: 0.3s;
         }
+        .formula-list li:hover, .formula-list li.active { background: var(--accent); }
 
-        .formula-list li:hover, .formula-list li.active {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
+        .formula-detail { background: #f9f9f9; padding: 20px; border-radius: 10px; display: none; border-left: 5px solid var(--accent); }
 
-        .formula-detail {
-            background: var(--light);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
+        .table-container { overflow-x: auto; border-radius: 10px; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { padding: 15px; border: 1px solid #eee; text-align: left; }
+        th { background: var(--primary); color: white; }
 
-        /* --- ISTILAH TEKNIS (TABLET MODERN) --- */
-        .table-container {
-            overflow-x: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
-        }
+        .term-badge { background: var(--accent); color: white; padding: 2px 8px; border-radius: 4px; font-family: monospace; }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 500px;
-        }
-
-        th, td {
-            padding: 18px;
-            text-align: left;
-        }
-
-        th {
-            background-color: var(--primary);
-            color: var(--white);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-
-        td {
-            border-bottom: 1px solid #eee;
-        }
-
-        tr:last-child td { border-bottom: none; }
-        tr:hover td { background-color: #fcfcfc; }
-
-        .term-badge {
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 0.9rem;
-        }
-
-        /* --- CONTOH NASKAH (CODE STYLE) --- */
         .script-sample {
-            font-family: 'Roboto Mono', monospace;
-            background-color: #272822;
+            background: #272822;
             color: #f8f8f2;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
+            font-family: 'Roboto Mono', monospace;
             font-size: 0.9rem;
-            margin-top: 20px;
+        }
+        .script-sample strong { color: #66d9ef; }
+        .script-sample i { color: #a6e22e; font-style: normal; }
+
+        footer { background: var(--primary); color: white; text-align: center; padding: 40px; }
+
+        #backToTop {
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--accent); color: white;
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; display: none; z-index: 1000;
         }
 
-        .script-sample strong { color: #66d9ef; } /* Anchor */
-        .script-sample i { color: #a6e22e; }    /* Visual */
-        .script-sample span { color: #e6db74; } /* Tanda Baca */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
-            text-align: center;
-            padding: 50px 20px;
-            margin-top: auto;
-        }
-
-        /* --- ANIMASI KEYFRAMES --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            section { padding: 25px; }
-            h2 { font-size: 1.6rem; }
-            th, td { padding: 12px; font-size: 0.9rem; }
+            header h1 { font-size: 2rem; }
+            section { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="container_hero">
-        <h1>Mastering Naskah Berita</h1>
-        <p><i class="fas fa-satellite-dish"></i> Modul Interaktif Dasar Penyiaran & Jurnalistik</p>
-    </div>
+    <h1>Mastering Naskah Berita</h1>
+    <p><i class="fas fa-satellite-dish"></i> Modul SMK Broadcast & Penyiaran</p>
 </header>
 
 <div class="container">
-
-    <section id="definisi">
-        <h2><i class="fas fa-lightbulb"></i>1. Apa Itu Naskah Berita?</h2>
-        <p>Naskah berita adalah <strong>fondasi utama</strong> dalam produksi berita. Ini adalah teks tertulis yang disusun oleh jurnalis atau <em>scriptwriter</em> sebagai panduan operasional bagi pembaca berita (<em>news anchor/news reader</em>).</p>
-        <p>Naskah ini berfungsi menjaga agar informasi yang disampaikan tetap **akurat**, **runtut**, dan **sesuai dengan durasi** siaran yang sangat ketat.</p>
+    <section>
+        <h2><i class="fas fa-lightbulb"></i> 1. Definisi</h2>
+        <p>Naskah berita adalah panduan tertulis bagi <strong>news anchor</strong> untuk menyampaikan informasi secara akurat dan tepat durasi.</p>
     </section>
 
-    <section id="jenis">
-        <h2><i class="fas fa-list-ul"></i>2. Jenis-jenis Berita</h2>
-        <p>Dalam dunia jurnalistik profesional, berita diklasifikasikan berdasarkan cara penyampaian dan kedalaman informasinya:</p>
+    <section>
+        <h2><i class="fas fa-list"></i> 2. Jenis-Jenis Berita</h2>
         <div class="news-grid">
-            <div class="news-card">
-                <h4><i class="fas fa-bolt"></i> Straight News</h4>
-                <p>Berita langsung yang menyajikan informasi peristiwa terbaru secara singkat, padat, dan apa adanya.</p>
-            </div>
-            <div class="news-card">
-                <h4><i class="fas fa-fire"></i> Hard News</h4>
-                <p>Bagian dari straight news yang berisi berita serius, penting, dan harus segera diketahui publik (Politik, Kriminal).</p>
-            </div>
-            <div class="news-card">
-                <h4><i class="fas fa-smile"></i> Soft News</h4>
-                <p>Berita yang lebih ringan dan menghibur, seringkali mengedepankan aspek kemanusiaan (human interest).</p>
-            </div>
-            <div class="news-card">
-                <h4><i class="fas fa-search"></i> Investigative News</h4>
-                <p>Berita yang disusun berdasarkan penyelidikan panjang untuk mengungkap fakta-fakta tersembunyi.</p>
-            </div>
+            <div class="news-card"><h4>Straight News</h4><p>Berita langsung, singkat, dan padat.</p></div>
+            <div class="news-card"><h4>Hard News</h4><p>Berita serius dan mendesak.</p></div>
+            <div class="news-card"><h4>Soft News</h4><p>Berita ringan/human interest.</p></div>
+            <div class="news-card"><h4>Feature</h4><p>Berita bergaya cerita kreatif.</p></div>
         </div>
     </section>
 
-    <section id="struktur">
-        <h2><i class="fas fa-sitemap"></i>3. Struktur Piramida Terbalik</h2>
-        <p>Informasi paling penting diletakkan di **bagian paling awal** agar audiens langsung mendapatkan inti berita dalam sekali dengar.</p>
-        <ul style="list-style: none; padding: 0; margin-top: 15px;">
-            <li style="border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 10px;">
-                <strong>Lead (Teras Berita):</strong> Paragraf pertama yang berisi poin paling penting (inti 5W+1H).
-            </li>
-            <li style="border-left: 4px solid var(--secondary); padding-left: 15px; margin-bottom: 10px;">
-                <strong>Body (Tubuh Berita):</strong> Penjelasan detail, kronologi, dan latar belakang peristiwa.
-            </li>
-            <li style="border-left: 4px solid var(--light); padding-left: 15px; margin-bottom: 10px; color: #888;">
-                <strong>Tail (Ekor Berita):</strong> Informasi pendukung yang jika dipotong tidak merubah inti berita.
-            </li>
-        </ul>
-    </section>
-
-    <section id="fondasi">
-        <h2><i class="fas fa-question-circle"></i>4. Fondasi Informasi: 5W + 1H</h2>
-        <p>Klik pada unsur di bawah untuk melihat penjelasannya:</p>
+    <section>
+        <h2><i class="fas fa-question-circle"></i> 3. Fondasi 5W + 1H</h2>
         <ul class="formula-list" id="formulaList">
-            <li data-target="what">What</li>
-            <li data-target="who">Who</li>
-            <li data-target="where">Where</li>
-            <li data-target="when">When</li>
-            <li data-target="why">Why</li>
-            <li data-target="how">How</li>
+            <li data-info="Apa yang terjadi?">What</li>
+            <li data-info="Siapa yang terlibat?">Who</li>
+            <li data-info="Di mana lokasi kejadian?">Where</li>
+            <li data-info="Kapan waktu kejadiannya?">When</li>
+            <li data-info="Mengapa hal itu terjadi?">Why</li>
+            <li data-info="Bagaimana kronologinya?">How</li>
         </ul>
-        <div class="formula-detail" id="formulaDetail">
+        <div id="formulaDetail" class="formula-detail">
             <h4 id="detailTitle"></h4>
             <p id="detailText"></p>
         </div>
     </section>
 
-    <section id="karakteristik">
-        <h2><i class="fas fa-microphone-alt"></i>5. Karakteristik "Writing for the Ear"</h2>
-        <p>Berbeda dengan berita cetak, naskah siaran wajib menggunakan gaya bahasa yang **menulis untuk didengar**:</p>
-        <div class="news-grid">
-            <div class="news-card">
-                <h4><i class="fas fa-check-circle"></i> Sederhana & Ringkas</h4>
-                <p>Gunakan kalimat pendek agar mudah dipahami dalam sekali dengar.</p>
-            </div>
-            <div class="news-card">
-                <h4><i class="fas fa-comments"></i> Conversational</h4>
-                <p>Gaya bahasa tutur yang sopan namun bercerita (seperti berbicara langsung).</p>
-            </div>
-            <div class="news-card">
-                <h4><i class="fas fa-brain"></i> Satu Kalimat, Satu Ide</h4>
-                <p>Hindari kalimat majemuk yang membingungkan.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="istilah">
-        <h2><i class="fas fa-tools"></i>6. Istilah Teknis Produksi TV</h2>
+    <section>
+        <h2><i class="fas fa-tools"></i> 4. Istilah Teknis</h2>
         <div class="table-container">
             <table>
-                <thead>
-                    <tr>
-                        <th>Istilah</th>
-                        <th>Keterangan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td><span class="term-badge">ANCR (Anchor)</span></td><td>Pembaca berita di studio.</td></tr>
-                    <tr><td><span class="term-badge">VO (Voice Over)</span></td><td>Narasi suara saat video (B-Roll) tayang.</td></tr>
-                    <tr><td><span class="term-badge">SOT (Sound on Tape)</span></td><td>Potongan video hasil wawancara narasumber.</td></tr>
-                    <tr><td><span class="term-badge">CG (Char. Gen.)</span></td><td>Teks nama/judul yang muncul di layar.</td></tr>
-                </tbody>
+                <tr><th>Istilah</th><th>Fungsi</th></tr>
+                <tr><td><span class="term-badge">ANCR</span></td><td>Teks untuk pembaca berita.</td></tr>
+                <tr><td><span class="term-badge">VO</span></td><td>Suara narasi di atas video.</td></tr>
+                <tr><td><span class="term-badge">SOT</span></td><td>Hasil wawancara narasumber.</td></tr>
+                <tr><td><span class="term-badge">CG</span></td><td>Teks nama di layar.</td></tr>
             </table>
         </div>
     </section>
 
-    <section id="format">
-        <h2><i class="fas fa-file-alt"></i>7. Format Penulisan & Contoh</h2>
-        <p>Gunakan tanda baca jeda khusus:</p>
-        <p><strong>(/)</strong> = Jeda satu (Koma), <strong>(//)</strong> = Jeda dua (Titik), <strong>KAPITAL</strong> = Penekanan.</p>
-        
+    <section>
+        <h2><i class="fas fa-edit"></i> 5. Contoh Naskah</h2>
         <div class="script-sample">
             <i>(CUT TO ANCHOR)</i><br>
-            <strong>(ANCHOR):</strong> Selamat siang pemirsa // Inovasi luar biasa datang dari dunia pendidikan // <span>/</span><br><br>
-            <i>(ROLL VIDEO B-ROLL - SISWA MERAKIT)</i><br>
-            <strong>(VO):</strong> Seorang siswa SMK di Jawa Tengah <span>/</span> berhasil menciptakan aplikasi game edukasi berbasis web // <span>/</span><br><br>
-            <i>(SOT - SISWA)</i><br>
-            <strong>(SOT):</strong> "Tujuan saya membuat game ini agar teman-teman tidak bosan belajar koding."
+            <strong>(ANCHOR):</strong> Selamat siang pemirsa // Inovasi luar biasa datang dari dunia pendidikan // / <br><br>
+            <i>(ROLL VIDEO B-ROLL)</i><br>
+            <strong>(VO):</strong> Seorang siswa SMK di Jawa Tengah / berhasil membuat aplikasi game edukasi berbasis web // /
         </div>
     </section>
-
 </div>
 
+<div id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
 <footer>
-    <div class="container">
-        <p><i class="fas fa-graduation-cap"></i> Modul Pembelajaran SMK - Informatics & Broadcasting</p>
-        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Material. Desain Modern.</p>
-    </div>
+    <p>&copy; 2026 Materi Broadcast SMK - Kreatif & Inovatif</p>
 </footer>
 
 <script>
-    // --- JS UNTUK 5W+1H INTERAKTIF ---
-    const details = {
-        what: { title: "What (Apa)", text: "Menjelaskan peristiwa apa yang sedang terjadi." },
-        who: { title: "Who (Siapa)", text: "Menjelaskan siapa saja tokoh atau pihak yang terlibat." },
-        where: { title: "Where (Di Mana)", text: "Menjelaskan lokasi kejadian peristiwa tersebut." },
-        when: { title: "When (Kapan)", text: "Menjelaskan waktu kejadiannya secara jelas." },
-        why: { title: "Why (Mengapa)", text: "Menjelaskan penyebab atau alasan peristiwa itu terjadi." },
-        how: { title: "How (Bagaimana)", text: "Menjelaskan kronologi atau proses detail kejadiannya." }
-    };
-
-    const listItems = document.querySelectorAll('#formulaList li');
+    // 5W1H Logic
+    const formulaItems = document.querySelectorAll('#formulaList li');
     const detailBox = document.getElementById('formulaDetail');
-    const detailTitle = document.getElementById('detailTitle');
-    const detailText = document.getElementById('detailText');
-
-    listItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // Remove active class
-            listItems.forEach(li => li.classList.remove('active'));
-            // Add active to clicked
-            this.classList.add('active');
-            
-            const target = this.getAttribute('data-target');
-            detailTitle.innerText = details[target].title;
-            detailText.innerText = details[target].text;
+    formulaItems.forEach(item => {
+        item.addEventListener('click', () => {
+            formulaItems.forEach(li => li.classList.remove('active'));
+            item.classList.add('active');
+            document.getElementById('detailTitle').innerText = item.innerText;
+            document.getElementById('detailText').innerText = item.getAttribute('data-info');
             detailBox.style.display = 'block';
         });
     });
 
-    // --- JS UNTUK ANIMASI SCROLL (Intersection Observer) ---
-    const sections = document.querySelectorAll('section');
-    const options = { threshold: 0.2 };
-
-    const observer = new IntersectionObserver(function(entries, observer) {
+    // Scroll Animation
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
-    }, options);
+    }, { threshold: 0.1 });
+    document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+    // Back to Top
+    const btn = document.getElementById('backToTop');
+    window.onscroll = () => {
+        btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    };
+    btn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 </script>
 
 </body>
